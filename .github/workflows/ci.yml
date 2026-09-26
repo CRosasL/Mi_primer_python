@@ -1,0 +1,23 @@
+name: Mi Primera CI en Python
+
+# Cuándo se ejecuta: cada vez que subas cambios (push)
+on: [push]
+
+jobs:
+  verificar-codigo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar el código
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Instalar herramienta de pruebas
+      run: pip install pytest
+
+    - name: Ejecutar pruebas automatizadas
+      run: pytest
